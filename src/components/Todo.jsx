@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, removeTodo }) => {
   return (
     <div className="todo">
       <div className="content">
@@ -11,7 +11,7 @@ const Todo = ({ todo }) => {
       </div>
         <div>
           <button className='complete'>Complete</button>
-          <button className='remove'>x</button>
+          <button className='remove' onClick={() => removeTodo(todo.id)}>x</button>
       </div>
     </div>
   )
@@ -19,9 +19,12 @@ const Todo = ({ todo }) => {
 
 Todo.propTypes = {
   todo: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  removeTodo: PropTypes.func.isRequired
 }
+
 
 export default Todo;
